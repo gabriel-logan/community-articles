@@ -126,6 +126,7 @@ You can even use raw HTML in Markdown.
 
 ### Example:
 
+```html
 <div style="color: red;">
   <p>This is a red text inside a div!</p>
 </div>
