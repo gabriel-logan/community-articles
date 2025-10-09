@@ -1,12 +1,12 @@
+import "./App.css";
+
 import { BrowserRouter, Route, Routes } from "react-router";
 
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import ArticlesPage from "./pages/ArticlesPage";
 import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFound";
-import ArticlesPage from "./pages/ArticlesPage";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-
-import "./App.css";
 
 function App() {
   return (
