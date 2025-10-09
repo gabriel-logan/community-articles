@@ -8,8 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write **/*.{js,ts,tsx,json,css,md,yml}",
-    "format:check": "prettier --check **/*.{js,ts,tsx,json,css,md,yml}",
+    "format": "prettier --write **/*.{js,ts,tsx,json,css,md,yml} .github/workflows/*.yml",
+    "format:check": "prettier --check **/*.{js,ts,tsx,json,css,md,yml} .github/workflows/*.yml",
     "preview": "vite preview"
   },
   "dependencies": {
