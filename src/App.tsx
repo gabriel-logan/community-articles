@@ -1,13 +1,18 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { BrowserRouter, Route, Routes } from "react-router";
+
+import HomePage from "./pages/Home";
+import NotFoundPage from "./pages/NotFound";
 
 import "./App.css";
 
-import example2Raw from "../articles/gabriel-logan/examples/2.md?raw";
-
 function App() {
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]}>{example2Raw}</ReactMarkdown>
+    <BrowserRouter basename="/community-articles/">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
