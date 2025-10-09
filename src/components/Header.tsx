@@ -16,22 +16,10 @@ export default function Header() {
             Home
           </Link>
           <Link
-            to="/articles"
-            className="font-medium text-slate-200 no-underline transition-colors duration-200 hover:text-sky-400"
-          >
-            Artigos
-          </Link>
-          <Link
             to="/about"
             className="font-medium text-slate-200 no-underline transition-colors duration-200 hover:text-sky-400"
           >
-            Sobre
-          </Link>
-          <Link
-            to="/contact"
-            className="font-medium text-slate-200 no-underline transition-colors duration-200 hover:text-sky-400"
-          >
-            Contato
+            About
           </Link>
         </nav>
       </div>
