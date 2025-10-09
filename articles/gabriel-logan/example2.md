@@ -3,9 +3,6 @@
 ---
 
 title: "My First Markdown Example"
-date: 2024-06-15
-description: "A comprehensive example showcasing various Markdown features."
-tags: ["markdown", "example", "documentation"]
 
 ---
 

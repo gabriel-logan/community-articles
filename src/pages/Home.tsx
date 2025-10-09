@@ -5,7 +5,7 @@ import example2Raw from "../../articles/gabriel-logan/example2.md?raw";
 
 export default function HomePage() {
   return (
-    <section>
+    <section className="markdown">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{example2Raw}</ReactMarkdown>
     </section>
   );

@@ -19,7 +19,7 @@ export default function ArticlesPage() {
   }
 
   return (
-    <section>
+    <section className="markdown">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>{articleRaw}</ReactMarkdown>
     </section>
   );
