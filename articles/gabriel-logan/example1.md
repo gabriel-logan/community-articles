@@ -1,0 +1,146 @@
+# Markdown Example
+
+## 1. Text Formatting
+
+### **Bold Text**
+
+You can make text **bold** by wrapping it with double asterisks (`**bold**`) or double underscores (`__bold__`).
+
+### _Italic Text_
+
+You can italicize text by using a single asterisk (`*italic*`) or underscore (`_italic_`).
+
+### **_Bold and Italic_**
+
+You can combine both styles as well: **_bold and italic_**
+
+### Strikethrough
+
+You can also use ~~strikethrough~~ text by wrapping it with double tildes.
+
+## 2. Headings
+
+### Heading 1
+
+# This is a level 1 heading (H1)
+
+### Heading 2
+
+## This is a level 2 heading (H2)
+
+### Heading 3
+
+### This is a level 3 heading (H3)
+
+## 3. Lists
+
+### Unordered List
+
+- Item 1
+- Item 2
+  - Subitem 1
+  - Subitem 2
+    - Sub-subitem 1
+- Item 3
+
+### Ordered List
+
+1. First item
+2. Second item
+3. Third item
+
+### Nested List
+
+1. Parent item
+   1. Child item
+   2. Child item
+
+## 4. Links and Images
+
+### Link
+
+You can create a [link to Google](https://www.google.com).
+
+### Image
+
+You can display an image using the following syntax:
+
+![React Logo](https://reactjs.org/logo-og.png)
+
+## 5. Blockquotes
+
+> This is a blockquote. It can be used to highlight quotes or important notes.
+
+## 6. Code
+
+### Inline Code
+
+You can use inline code like `const x = 10;` for short snippets.
+
+### Code Block
+
+```js
+function greet(name) {
+  console.log("Hello, " + name);
+}
+```
+
+### Code Block with Language
+
+```python
+def greet(name):
+    print(f"Hello, {name}")
+```
+
+## 7. Tables
+
+| Name       | Age | Occupation      |
+| ---------- | --- | --------------- |
+| John Doe   | 30  | Developer       |
+| Jane Smith | 25  | Designer        |
+| Sam Brown  | 40  | Project Manager |
+
+## 8. Horizontal Rule
+
+---
+
+This is a horizontal rule above.
+
+---
+
+## 9. Task Lists
+
+- [x] Task 1 (Completed)
+- [ ] Task 2 (Incomplete)
+- [x] Task 3 (Completed)
+
+## 10. Escaped Characters
+
+To display characters like `*` or `_`, you can escape them with a backslash: `\*escaped\*`
+
+---
+
+## 11. HTML Elements
+
+You can even use raw HTML in Markdown.
+
+### Example:
+
+<div style="color: red;">
+  <p>This is a red text inside a div!</p>
+</div>
+```
+
+### Key Features Used in This Example:
+
+- Headings (`#`, `##`, `###`)
+- Text formatting (bold, italic, strikethrough)
+- Lists (ordered, unordered, and nested)
+- Links and Images
+- Blockquotes (`>`)
+- Code blocks (inline and block)
+- Tables
+- Horizontal rules (`---`)
+- Task lists (`[ ]` and `[x]`)
+- Escaped characters
+- Raw HTML elements
