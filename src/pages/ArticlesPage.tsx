@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-const articleFiles = import.meta.glob("../articles/*/*.md", {
+const articleFiles = import.meta.glob("../../articles/*/*.md", {
   as: "raw",
   eager: true,
 });
@@ -10,7 +10,7 @@ const articleFiles = import.meta.glob("../articles/*/*.md", {
 export default function ArticlesPage() {
   const { author, slug } = useParams();
 
-  const path = `../articles/${author}/${slug}.md`;
+  const path = `../../articles/${author}/${slug}.md`;
 
   const articleRaw = articleFiles[path];
 
