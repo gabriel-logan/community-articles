@@ -1,17 +1,38 @@
-import "./Layout.css";
-
 import { Link } from "react-router";
 
 export default function Header() {
   return (
-    <header className="site-header">
-      <div className="header-content">
-        <h1 className="site-title">COmunity Articles</h1>
-        <nav className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/articles">Artigos</Link>
-          <Link to="/about">Sobre</Link>
-          <Link to="/contact">Contato</Link>
+    <header className="sticky top-0 z-[100] bg-slate-900 px-8 py-4 text-slate-100 shadow-md">
+      <div className="flex items-center justify-between">
+        <h1 className="text-[1.6rem] font-bold tracking-[-0.5px]">
+          COmunity Articles
+        </h1>
+
+        <nav className="flex gap-6">
+          <Link
+            to="/"
+            className="font-medium text-slate-200 no-underline transition-colors duration-200 hover:text-sky-400"
+          >
+            Home
+          </Link>
+          <Link
+            to="/articles"
+            className="font-medium text-slate-200 no-underline transition-colors duration-200 hover:text-sky-400"
+          >
+            Artigos
+          </Link>
+          <Link
+            to="/about"
+            className="font-medium text-slate-200 no-underline transition-colors duration-200 hover:text-sky-400"
+          >
+            Sobre
+          </Link>
+          <Link
+            to="/contact"
+            className="font-medium text-slate-200 no-underline transition-colors duration-200 hover:text-sky-400"
+          >
+            Contato
+          </Link>
         </nav>
       </div>
     </header>
