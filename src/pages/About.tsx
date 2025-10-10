@@ -24,8 +24,7 @@ export default function AboutPage() {
         <p className="mb-6 leading-relaxed text-gray-300">
           Articles are stored in a public GitHub repository, making it easy for
           contributors to submit their work via pull requests. Each article is
-          rendered with beautiful syntax highlighting, thanks to the integration
-          of <span className="font-medium text-blue-400">Shiki</span>.
+          rendered with beautiful syntax highlighting.
         </p>
 
         <p className="mb-6 leading-relaxed text-gray-300">
