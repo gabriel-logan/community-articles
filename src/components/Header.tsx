@@ -5,7 +5,7 @@ export default function Header() {
     <header className="sticky top-0 z-[100] bg-slate-900 px-8 py-4 text-slate-100 shadow-md">
       <div className="flex items-center justify-between">
         <h1 className="text-[1.6rem] font-bold tracking-[-0.5px]">
-          Community Articles
+          <Link to="/">Community Articles</Link>
         </h1>
 
         <nav className="flex gap-6">
