@@ -29,7 +29,10 @@ export default function MarkdownBase({
 
                 return (
                   <pre className={className}>
-                    <code dangerouslySetInnerHTML={{ __html: toHtml(tree) }} />
+                    <code
+                      className={className}
+                      dangerouslySetInnerHTML={{ __html: toHtml(tree) }}
+                    />
                   </pre>
                 );
               }
