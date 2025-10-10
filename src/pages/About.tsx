@@ -14,6 +14,21 @@ export default function AboutPage() {
         </p>
 
         <p className="mb-6 leading-relaxed text-gray-300">
+          Community Articles is a platform where anyone can easily publish
+          articles using Markdown files on GitHub. The site updates
+          automatically, so your content goes live instantly. It's perfect for
+          sharing tutorials, guides, and tech insights—whether you're a beginner
+          or an expert.
+        </p>
+
+        <p className="mb-6 leading-relaxed text-gray-300">
+          Articles are stored in a public GitHub repository, making it easy for
+          contributors to submit their work via pull requests. Each article is
+          rendered with beautiful syntax highlighting, thanks to the integration
+          of <span className="font-medium text-blue-400">Shiki</span>.
+        </p>
+
+        <p className="mb-6 leading-relaxed text-gray-300">
           Built with <span className="font-medium text-blue-400">React</span>,
           <span className="font-medium text-blue-400"> React Router</span>, and
           <span className="font-medium text-blue-400"> Tailwind CSS</span>, it

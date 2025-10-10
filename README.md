@@ -2,6 +2,12 @@
 
 A platform for sharing articles and tutorials about web development, programming, and technology.
 
+A platform where anyone can easily publish
+articles using Markdown files on GitHub. The site updates
+automatically, so your content goes live instantly. It's perfect for
+sharing tutorials, guides, and tech insights—whether you're a beginner
+or an expert.
+
 # How to create your articles
 
 This guide will help you create articles using Markdown syntax. And how to create the correct file structure for your articles to be displayed correctly on the website.
