@@ -13,7 +13,7 @@ export default function MarkdownBase({
   markdownContentRaw,
 }: MarkdownBaseProps) {
   return (
-    <section className="markdown-body">
+    <section className="markdown-body min-h-screen">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
