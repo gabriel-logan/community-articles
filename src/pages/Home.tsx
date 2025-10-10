@@ -5,7 +5,10 @@ interface Articles {
   [key: string]: () => Promise<string>;
 }
 
-const articles = import.meta.glob<Articles>("../../articles/*/*.md");
+const articles = import.meta.glob<Articles>("../../articles/*/*.md", {
+  query: "?raw",
+  import: "default",
+});
 
 export default function HomePage() {
   const [query, setQuery] = useState("");
