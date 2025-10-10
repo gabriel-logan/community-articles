@@ -7,16 +7,29 @@ export default function Footer() {
   const currentDay = String(currentDate.getDate()).padStart(2, "0");
 
   return (
-    <footer className="bg-slate-900 py-6 text-center text-slate-400 shadow-[0_-2px_6px_rgba(0,0,0,0.2)]">
-      <p>
-        © {currentDay}.{currentMonth}.{currentYear} Community Articles —{" "}
+    <footer className="border-t border-gray-800 bg-[#161b22] py-6 text-center text-sm text-gray-400">
+      <p className="mb-1">
+        © {currentDay}.{currentMonth}.{currentYear}{" "}
+        <span className="text-gray-300">Community Articles</span> —{" "}
         <Link
           to="https://github.com/gabriel-logan/community-articles"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sky-400 no-underline hover:underline"
+          className="text-blue-400 transition-colors hover:text-blue-300"
         >
           GitHub Repo
+        </Link>
+      </p>
+
+      <p>
+        Built by{" "}
+        <Link
+          to="https://github.com/gabriel-logan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 transition-colors hover:text-blue-300"
+        >
+          Gabriel Logan
         </Link>
       </p>
     </footer>
