@@ -46,6 +46,13 @@ export default function Header() {
           <Link to="/" className="transition-colors hover:text-blue-400">
             Home
           </Link>
+          <Link
+            to="https://github.com/gabriel-logan/community-articles/blob/main/README.md"
+            className="transition-colors hover:text-blue-400"
+            target="_blank"
+          >
+            How to Submit
+          </Link>
           <Link to="/about" className="transition-colors hover:text-blue-400">
             About
           </Link>
@@ -60,6 +67,14 @@ export default function Header() {
             className="transition-colors hover:text-blue-400"
           >
             Home
+          </Link>
+          <Link
+            to="https://github.com/gabriel-logan/community-articles/blob/main/README.md"
+            onClick={() => setIsOpen(false)}
+            className="transition-colors hover:text-blue-400"
+            target="_blank"
+          >
+            How to Submit
           </Link>
           <Link
             to="/about"
