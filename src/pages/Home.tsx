@@ -1,20 +1,13 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router";
 
-interface Articles {
-  [key: string]: () => Promise<string>;
-}
-
-const articles = import.meta.glob<Articles>("../../articles/*/*.md", {
-  query: "?raw",
-  import: "default",
-});
+import { articleFiles } from "../configs/articleFilesRaw";
 
 export default function HomePage() {
   const [query, setQuery] = useState("");
 
   const articleList = useMemo(() => {
-    const list = Object.entries(articles)
+    const list = Object.entries(articleFiles)
       .map(([path]) => {
         const match = path.match(/articles\/([^/]+)\/([^/]+)\.md$/);
 

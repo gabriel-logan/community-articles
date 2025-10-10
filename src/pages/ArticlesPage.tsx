@@ -1,12 +1,7 @@
 import { useParams } from "react-router";
 
 import MarkdownBase from "../components/MarkdownBase";
-
-const articleFiles = import.meta.glob<string>("../../articles/*/*.md", {
-  query: "?raw",
-  import: "default",
-  eager: true,
-});
+import { articleFiles } from "../configs/articleFilesRaw";
 
 export default function ArticlesPage() {
   const { author, slug } = useParams();

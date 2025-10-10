@@ -4,7 +4,8 @@ import { toHtml } from "hast-util-to-html";
 import remarkGfm from "remark-gfm";
 
 interface MarkdownBaseProps {
-  markdownContentRaw: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  markdownContentRaw: any;
 }
 
 const starryNight = await createStarryNight(common);
