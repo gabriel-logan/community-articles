@@ -13,3 +13,9 @@ body {
   margin: 1rem auto;
   padding: 2rem;
 }
+
+ol,
+ul,
+menu {
+  list-style: revert;
+}
