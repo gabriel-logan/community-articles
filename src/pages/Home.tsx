@@ -11,7 +11,7 @@ export default function HomePage() {
   const [query, setQuery] = useState("");
 
   const articleList = useMemo(() => {
-    return Object.entries(articles)
+    const list = Object.entries(articles)
       .map(([path]) => {
         const match = path.match(/articles\/([^/]+)\/([^/]+)\.md$/);
 
@@ -24,6 +24,8 @@ export default function HomePage() {
         return { path, username, fileName };
       })
       .filter(Boolean);
+
+    return list as { path: string; username: string; fileName: string }[];
   }, []);
 
   const filteredArticles = useMemo(() => {
@@ -31,8 +33,8 @@ export default function HomePage() {
 
     return articleList.filter(
       (a) =>
-        a?.fileName.toLowerCase().includes(lowerQuery) ||
-        a?.username.toLowerCase().includes(lowerQuery),
+        a.fileName.toLowerCase().includes(lowerQuery) ||
+        a.username.toLowerCase().includes(lowerQuery),
     );
   }, [query, articleList]);
 
