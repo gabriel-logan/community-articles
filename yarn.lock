@@ -1314,6 +1314,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@wooorm/starry-night@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "@wooorm/starry-night@npm:3.8.0"
+  dependencies:
+    "@types/hast": "npm:^3.0.0"
+    import-meta-resolve: "npm:^4.0.0"
+    vscode-oniguruma: "npm:^2.0.0"
+    vscode-textmate: "npm:^9.0.0"
+  checksum: 10c0/8b340fdc53a03a642e556b7c525aaa811fd757691980fdeb861a9adbf9ab7e84cc79ce58b11278e604d0c0ebcd85262c798a927019c8a57c9c9d36bba601f4ec
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:^3.0.0":
   version: 3.0.1
   resolution: "abbrev@npm:3.0.1"
@@ -1580,6 +1592,7 @@ __metadata:
     "@types/react": "npm:^19.1.16"
     "@types/react-dom": "npm:^19.1.9"
     "@vitejs/plugin-react": "npm:^5.0.4"
+    "@wooorm/starry-night": "npm:^3.8.0"
     eslint: "npm:^9.36.0"
     eslint-config-prettier: "npm:^10.1.8"
     eslint-plugin-prettier: "npm:^5.5.4"
@@ -1588,6 +1601,7 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:^12.1.1"
     github-markdown-css: "npm:^5.8.1"
     globals: "npm:^16.4.0"
+    hast-util-to-html: "npm:^9.0.5"
     prettier: "npm:^3.6.2"
     prettier-plugin-tailwindcss: "npm:^0.6.14"
     react: "npm:^19.1.1"
@@ -2287,6 +2301,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hast-util-to-html@npm:^9.0.5":
+  version: 9.0.5
+  resolution: "hast-util-to-html@npm:9.0.5"
+  dependencies:
+    "@types/hast": "npm:^3.0.0"
+    "@types/unist": "npm:^3.0.0"
+    ccount: "npm:^2.0.0"
+    comma-separated-tokens: "npm:^2.0.0"
+    hast-util-whitespace: "npm:^3.0.0"
+    html-void-elements: "npm:^3.0.0"
+    mdast-util-to-hast: "npm:^13.0.0"
+    property-information: "npm:^7.0.0"
+    space-separated-tokens: "npm:^2.0.0"
+    stringify-entities: "npm:^4.0.0"
+    zwitch: "npm:^2.0.4"
+  checksum: 10c0/b7a08c30bab4371fc9b4a620965c40b270e5ae7a8e94cf885f43b21705179e28c8e43b39c72885d1647965fb3738654e6962eb8b58b0c2a84271655b4d748836
+  languageName: node
+  linkType: hard
+
 "hast-util-to-jsx-runtime@npm:^2.0.0":
   version: 2.3.6
   resolution: "hast-util-to-jsx-runtime@npm:2.3.6"
@@ -2323,6 +2356,13 @@ __metadata:
   version: 3.0.1
   resolution: "html-url-attributes@npm:3.0.1"
   checksum: 10c0/496e4908aa8b77665f348b4b03521901794f648b8ac34a581022cd6f2c97934d5c910cd91bc6593bbf2994687549037bc2520fcdc769b31484f29ffdd402acd0
+  languageName: node
+  linkType: hard
+
+"html-void-elements@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "html-void-elements@npm:3.0.0"
+  checksum: 10c0/a8b9ec5db23b7c8053876dad73a0336183e6162bf6d2677376d8b38d654fdc59ba74fdd12f8812688f7db6fad451210c91b300e472afc0909224e0a44c8610d2
   languageName: node
   linkType: hard
 
@@ -2383,6 +2423,13 @@ __metadata:
     parent-module: "npm:^1.0.0"
     resolve-from: "npm:^4.0.0"
   checksum: 10c0/bf8cc494872fef783249709385ae883b447e3eb09db0ebd15dcead7d9afe7224dad7bd7591c6b73b0b19b3c0f9640eb8ee884f01cfaf2887ab995b0b36a0cbec
+  languageName: node
+  linkType: hard
+
+"import-meta-resolve@npm:^4.0.0":
+  version: 4.2.0
+  resolution: "import-meta-resolve@npm:4.2.0"
+  checksum: 10c0/3ee8aeecb61d19b49d2703987f977e9d1c7d4ba47db615a570eaa02fe414f40dfa63f7b953e842cbe8470d26df6371332bfcf21b2fd92b0112f9fea80dde2c4c
   languageName: node
   linkType: hard
 
@@ -4478,6 +4525,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vscode-oniguruma@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "vscode-oniguruma@npm:2.0.1"
+  checksum: 10c0/8d44354ad038f5ba10edf6fc3e3fd6dbacf0db6ecbe924a632b8c0a2929dbdad451c619164e48539b5a80ff112fc51d368b4637db2ed202a4fd5504621275289
+  languageName: node
+  linkType: hard
+
+"vscode-textmate@npm:^9.0.0":
+  version: 9.2.1
+  resolution: "vscode-textmate@npm:9.2.1"
+  checksum: 10c0/2e58d1d0b962e1731936acc7b9c390c9478be39d8b8155a1eb78b2dbf90a119550542d4899ea4250e52aedc9c68d77a8f1c6acf8ad172ee19c588da02708063c
+  languageName: node
+  linkType: hard
+
 "which@npm:^2.0.1":
   version: 2.0.2
   resolution: "which@npm:2.0.2"
@@ -4557,7 +4618,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zwitch@npm:^2.0.0":
+"zwitch@npm:^2.0.0, zwitch@npm:^2.0.4":
   version: 2.0.4
   resolution: "zwitch@npm:2.0.4"
   checksum: 10c0/3c7830cdd3378667e058ffdb4cf2bb78ac5711214e2725900873accb23f3dfe5f9e7e5a06dcdc5f29605da976fc45c26d9a13ca334d6eea2245a15e77b8fc06e

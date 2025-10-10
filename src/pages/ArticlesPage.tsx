@@ -1,6 +1,6 @@
-import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router";
-import remarkGfm from "remark-gfm";
+
+import MarkdownBase from "../components/MarkdownBase";
 
 const articleFiles = import.meta.glob("../../articles/*/*.md", {
   as: "raw",
@@ -15,12 +15,12 @@ export default function ArticlesPage() {
   const articleRaw = articleFiles[path];
 
   if (!articleRaw) {
-    return <div>Article not found</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center text-2xl font-bold">
+        Article not found
+      </div>
+    );
   }
 
-  return (
-    <section className="markdown-body">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{articleRaw}</ReactMarkdown>
-    </section>
-  );
+  return <MarkdownBase markdownContentRaw={articleRaw} />;
 }
