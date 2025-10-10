@@ -2,8 +2,9 @@ import { useParams } from "react-router";
 
 import MarkdownBase from "../components/MarkdownBase";
 
-const articleFiles = import.meta.glob("../../articles/*/*.md", {
-  as: "raw",
+const articleFiles = import.meta.glob<string>("../../articles/*/*.md", {
+  query: "?raw",
+  import: "default",
   eager: true,
 });
 
