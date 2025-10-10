@@ -47,9 +47,8 @@ export default function Header() {
             Home
           </Link>
           <Link
-            to="https://github.com/gabriel-logan/community-articles/blob/main/README.md"
+            to="/articles/gabriel-logan/example1"
             className="transition-colors hover:text-blue-400"
-            target="_blank"
           >
             How to Submit
           </Link>
@@ -69,10 +68,9 @@ export default function Header() {
             Home
           </Link>
           <Link
-            to="https://github.com/gabriel-logan/community-articles/blob/main/README.md"
+            to="/articles/gabriel-logan/example1"
             onClick={() => setIsOpen(false)}
             className="transition-colors hover:text-blue-400"
-            target="_blank"
           >
             How to Submit
           </Link>
