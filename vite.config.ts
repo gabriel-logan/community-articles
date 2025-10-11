@@ -16,7 +16,6 @@ export default defineConfig({
           markdown: ["react-markdown", "remark-gfm"],
           highlight: ["@wooorm/starry-night"],
           hastUtils: ["hast-util-to-html"],
-          styles: ["github-markdown-css"],
         },
       },
     },
