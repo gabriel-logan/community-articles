@@ -18,5 +18,12 @@ export default function ArticlesPage() {
     );
   }
 
-  return <MarkdownBase markdownContentRaw={articleRaw} />;
+  return (
+    <>
+      <title>
+        {author} - {slug}
+      </title>
+      <MarkdownBase markdownContentRaw={articleRaw} />
+    </>
+  );
 }
