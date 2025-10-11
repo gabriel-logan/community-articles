@@ -2,6 +2,12 @@ import { useState } from "react";
 import { FaBars, FaTimes, FaUsers } from "react-icons/fa";
 import { Link } from "react-router";
 
+const navigationLinks = [
+  { name: "Home", to: "/" },
+  { name: "How to Submit", to: "/articles/gabriel-logan/example1" },
+  { name: "About", to: "/about" },
+] as const;
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,18 +38,15 @@ export default function Header() {
         </button>
 
         <nav className="hidden gap-8 text-[clamp(0.9rem,1.2vw,1rem)] font-medium sm:flex">
-          <Link to="/" className="transition-colors hover:text-gray-100">
-            Home
-          </Link>
-          <Link
-            to="/articles/gabriel-logan/example1"
-            className="transition-colors hover:text-gray-100"
-          >
-            How to Submit
-          </Link>
-          <Link to="/about" className="transition-colors hover:text-gray-100">
-            About
-          </Link>
+          {navigationLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.to}
+              className="transition-colors hover:text-gray-100"
+            >
+              {link.name}
+            </Link>
+          ))}
         </nav>
       </div>
 
@@ -53,27 +56,16 @@ export default function Header() {
         }`}
       >
         <nav className="flex flex-col space-y-3 px-6 text-[clamp(0.95rem,2vw,1.1rem)]">
-          <Link
-            to="/"
-            onClick={() => setIsOpen(false)}
-            className="transition-colors hover:text-gray-100"
-          >
-            Home
-          </Link>
-          <Link
-            to="/articles/gabriel-logan/example1"
-            onClick={() => setIsOpen(false)}
-            className="transition-colors hover:text-gray-100"
-          >
-            How to Submit
-          </Link>
-          <Link
-            to="/about"
-            onClick={() => setIsOpen(false)}
-            className="transition-colors hover:text-gray-100"
-          >
-            About
-          </Link>
+          {navigationLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.to}
+              onClick={() => setIsOpen(false)}
+              className="transition-colors hover:text-gray-100"
+            >
+              {link.name}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>
