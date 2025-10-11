@@ -18,11 +18,11 @@ export default function ArticlesPage() {
     );
   }
 
+  const dinamicTitle = `${author} - ${slug}`;
+
   return (
     <>
-      <title>
-        {author} - {slug}
-      </title>
+      <title>{dinamicTitle}</title>
       <MarkdownBase markdownContentRaw={articleRaw} />
     </>
   );
