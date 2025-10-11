@@ -8,5 +8,18 @@ export default defineConfig({
   base: "/community-articles/",
   build: {
     minify: "terser",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+          router: ["react-router"],
+          markdown: ["react-markdown", "remark-gfm"],
+          highlight: ["@wooorm/starry-night"],
+          hastUtils: ["hast-util-to-html"],
+          styles: ["github-markdown-css"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1400,
   },
 });
