@@ -1,6 +1,11 @@
 export default function AboutPage() {
   return (
     <main className="flex min-h-screen justify-center bg-[#0d1117] px-4 py-16">
+      <title>About - Community Articles</title>
+      <meta
+        name="description"
+        content="Learn more about the Community Articles project, its purpose, and how you can contribute."
+      />
       <article className="markdown-body w-full max-w-3xl bg-[#0d1117] text-gray-200">
         <h1 className="mb-8 text-center text-4xl font-bold text-gray-100">
           About This Project

@@ -36,6 +36,11 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-[#0d1117] px-4 py-12 text-gray-200">
+      <title>Community Articles</title>
+      <meta
+        name="description"
+        content="A platform for sharing articles from the community. Submit your own articles and read what others have shared."
+      />
       <section className="mx-auto max-w-6xl">
         <h1 className="mb-2 text-center text-3xl font-bold text-gray-100">
           Latest Articles
