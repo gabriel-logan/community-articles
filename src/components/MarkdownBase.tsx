@@ -59,7 +59,6 @@ export default function MarkdownBase({
                     <pre className={className}>
                       <code
                         className={className}
-                        {...props}
                         dangerouslySetInnerHTML={{ __html: html }}
                       />
                     </pre>
