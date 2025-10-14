@@ -42,7 +42,8 @@ export default function MarkdownBase({
       const doc = document.documentElement;
       const scrollTop = window.scrollY || doc.scrollTop || 0;
       const total = Math.max(doc.scrollHeight - window.innerHeight, 0);
-      const pct = total > 0 ? Math.min(100, Math.max(0, (scrollTop / total) * 100)) : 0;
+      const pct =
+        total > 0 ? Math.min(100, Math.max(0, (scrollTop / total) * 100)) : 0;
       setProgress(pct);
       setShowToTop(scrollTop > 400);
     };
@@ -59,7 +60,7 @@ export default function MarkdownBase({
   return (
     <section className="markdown-body min-h-screen">
       {/* Reading progress bar */}
-      <div className="fixed left-0 top-0 z-50 h-1 w-full bg-transparent">
+      <div className="fixed top-0 left-0 z-50 h-1 w-full bg-transparent">
         <div
           className="h-full bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 transition-[width] duration-150"
           style={{ width: `${progress}%` }}
@@ -131,7 +132,7 @@ export default function MarkdownBase({
       {showToTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400/70"
+          className="fixed right-6 bottom-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all hover:bg-blue-500 focus:ring-2 focus:ring-blue-400/70 focus:outline-none"
           aria-label="Back to top"
           title="Back to top"
         >
