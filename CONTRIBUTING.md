@@ -2,6 +2,9 @@
 
 A platform for sharing knowledge and articles related to various topics. Contribute your articles and help build a rich knowledge base for the community.
 
+> **Note:** Please ensure that your contributions adhere to the project's guidelines and best practices.
+> Ensure to run `yarn format` and `yarn lint:fix` before submitting any code.
+
 ## How to Contribute
 
 1. **Fork the Repository**
