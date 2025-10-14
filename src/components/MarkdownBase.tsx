@@ -1,5 +1,5 @@
 import { type JSX, useEffect, useState } from "react";
-import { FiCheck, FiCopy, FiLink } from "react-icons/fi";
+import { FiArrowUp, FiCheck, FiCopy, FiLink } from "react-icons/fi";
 import ReactMarkdown from "react-markdown";
 import { useLocation, useNavigate } from "react-router";
 import { common, createStarryNight } from "@wooorm/starry-night";
@@ -17,6 +17,8 @@ export default function MarkdownBase({
   markdownContentRaw,
 }: MarkdownBaseProps) {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [progress, setProgress] = useState<number>(0);
+  const [showToTop, setShowToTop] = useState<boolean>(false);
 
   const location = useLocation();
 
@@ -35,8 +37,37 @@ export default function MarkdownBase({
     }
   }, [location.hash]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const scrollTop = window.scrollY || doc.scrollTop || 0;
+      const total = Math.max(doc.scrollHeight - window.innerHeight, 0);
+      const pct =
+        total > 0 ? Math.min(100, Math.max(0, (scrollTop / total) * 100)) : 0;
+      setProgress(pct);
+      setShowToTop(scrollTop > 400);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <section className="markdown-body min-h-screen">
+      {/* Reading progress bar */}
+      <div className="fixed top-0 left-0 z-50 h-1 w-full bg-transparent">
+        <div
+          className="h-full bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 transition-[width] duration-150"
+          style={{ width: `${progress}%` }}
+          aria-hidden
+        />
+      </div>
+
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
@@ -96,6 +127,18 @@ export default function MarkdownBase({
       >
         {markdownContentRaw}
       </ReactMarkdown>
+
+      {/* Back to top button */}
+      {showToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed right-6 bottom-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all hover:bg-blue-500 focus:ring-2 focus:ring-blue-400/70 focus:outline-none"
+          aria-label="Back to top"
+          title="Back to top"
+        >
+          <FiArrowUp size={18} />
+        </button>
+      )}
     </section>
   );
 }
