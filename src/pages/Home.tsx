@@ -66,9 +66,9 @@ export default function HomePage() {
               <Link
                 key={path}
                 to={`/articles/${username}/${fileName}`}
-                className="group block rounded-xl border border-gray-800 bg-[#111820] p-6 transition-all duration-200 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/10"
+                className="group block min-w-0 overflow-hidden rounded-xl border border-gray-800 bg-[#111820] p-6 transition-all duration-200 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/10"
               >
-                <h3 className="truncate text-xl font-semibold text-gray-100 group-hover:text-blue-400">
+                <h3 className="overflow-hidden text-xl font-semibold text-ellipsis whitespace-nowrap text-gray-100 group-hover:text-blue-400">
                   {fileName.replace(/-/g, " ")}
                 </h3>
                 <p className="mt-2 text-sm text-gray-500">by {username}</p>
