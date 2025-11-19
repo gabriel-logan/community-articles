@@ -1,6 +1,6 @@
 # EN
 
-# EXTREMELY COMPLETE Documentation — `*` and `&` in Go (Golang)
+# COMPLETE Documentation — `*` and `&` in Go (Golang)
 
 > This documentation covers, in detail, everything you need to know about the operators `&` (address-of) and `*` (indirection/dereference) in Go: pointer types, behavior, practical examples, pitfalls, best practices, interactions with `new`/`make`, `unsafe`, `interface{}`, methods, concurrency, escape analysis, and much more.
 
@@ -565,7 +565,7 @@ func NewInt(v int) *int {
 
 # PT
 
-# Documentação EXTREMAMENTE COMPLETA — `*` e `&` em Go (Golang)
+# Documentação COMPLETA — `*` e `&` em Go (Golang)
 
 > Esta documentação cobre, em detalhes, tudo o que você precisa saber sobre os operadores `&` (address-of) e `*` (indirection/dereference) em Go: tipos de ponteiro, comportamento, exemplos práticos, armadilhas, boas práticas, interações com `new`/`make`, `unsafe`, `interface{}`, métodos, concorrência, escape analysis e muito mais.
 
