@@ -152,10 +152,30 @@ function Heading({
 }) {
   const navigate = useNavigate();
 
-  const text = String(children)
-    .replace(/<\/?[^>]+(>|$)/g, "")
-    .trim();
-  const id = text.toLowerCase().replace(/[^\w]+/g, "-");
+  function extractText(node: React.ReactNode): string {
+    if (typeof node === "string" || typeof node === "number") {
+      return String(node);
+    }
+
+    if (Array.isArray(node)) {
+      return node.map(extractText).join("");
+    }
+
+    if (node && typeof node === "object" && "props" in node) {
+      return extractText(
+        (node.props as { children: React.ReactNode }).children,
+      );
+    }
+
+    return "";
+  }
+
+  const text = extractText(children);
+  const id = text
+    .toLowerCase()
+    .replace(/[^\w]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
 
