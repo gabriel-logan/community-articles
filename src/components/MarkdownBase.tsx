@@ -1,7 +1,7 @@
 import { type JSX, useEffect, useState } from "react";
 import { FiArrowUp, FiCheck, FiCopy, FiLink } from "react-icons/fi";
 import ReactMarkdown from "react-markdown";
-import { useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { common, createStarryNight } from "@wooorm/starry-night";
 import { toHtml } from "hast-util-to-html";
 import remarkGfm from "remark-gfm";
@@ -9,13 +9,17 @@ import remarkGfm from "remark-gfm";
 interface MarkdownBaseProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   markdownContentRaw: any;
+  author?: string;
 }
 
 const starryNight = await createStarryNight(common);
 
 export default function MarkdownBase({
   markdownContentRaw,
+  author = "unknown",
 }: MarkdownBaseProps) {
+  const githubUrl = `https://github.com/${author}`;
+
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [progress, setProgress] = useState<number>(0);
   const [showToTop, setShowToTop] = useState<boolean>(false);
@@ -58,7 +62,13 @@ export default function MarkdownBase({
   }, []);
 
   return (
-    <section className="markdown-body min-h-screen">
+    <section className="markdown-body relative min-h-screen">
+      <div className="absolute top-3 right-7 rounded-full bg-black/50 px-3 py-1 text-xs text-white backdrop-blur transition hover:bg-black/70">
+        <Link to={githubUrl} target="_blank" rel="noopener noreferrer">
+          Author: {author}
+        </Link>
+      </div>
+
       {/* Reading progress bar */}
       <div className="fixed top-0 left-0 z-50 h-1 w-full bg-transparent">
         <div
