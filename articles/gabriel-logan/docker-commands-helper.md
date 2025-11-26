@@ -1,8 +1,12 @@
 # Docker Commands Documentation - Helper
 
-## 🐳 Containers
+This document contains **all Docker fundamentals** plus a **generic production workflow**.
 
-### **List all containers (running and stopped)**
+---
+
+# 🐳 1. Containers — Essential Commands
+
+### **List all containers (running + stopped)**
 
 ```bash
 docker ps -a
@@ -26,10 +30,34 @@ docker restart <container_id_or_name>
 docker exec -it <container_id_or_name> /bin/bash
 ```
 
-If the image uses `sh`:
+If the shell is `sh`:
 
 ```bash
 docker exec -it <container_id_or_name> sh
+```
+
+### **View logs**
+
+```bash
+docker logs <container_id_or_name>
+```
+
+Follow:
+
+```bash
+docker logs -f <container_id_or_name>
+```
+
+### **Stop a container**
+
+```bash
+docker stop <container_id_or_name>
+```
+
+### **Start a container**
+
+```bash
+docker start <container_id_or_name>
 ```
 
 ### **Remove a container**
@@ -38,7 +66,7 @@ docker exec -it <container_id_or_name> sh
 docker rm <container_id_or_name>
 ```
 
-Force removal:
+Force:
 
 ```bash
 docker rm -f <container_id_or_name>
@@ -50,33 +78,15 @@ docker rm -f <container_id_or_name>
 docker run -d --name <container_name> <image>
 ```
 
-Run and open interactive terminal:
+Interactive:
 
 ```bash
 docker run -it --name <container_name> <image> /bin/bash
 ```
 
-### **View container logs**
-
-```bash
-docker logs <container_id_or_name>
-```
-
-### **Stop a container**
-
-```bash
-docker stop <container_id_or_name>
-```
-
-### **Start a stopped container**
-
-```bash
-docker start <container_id_or_name>
-```
-
 ---
 
-## 🗂️ Volumes
+# 🗂️ 2. Volumes — Essential Commands
 
 ### **List volumes**
 
@@ -90,25 +100,25 @@ docker volume ls
 docker volume create <volume_name>
 ```
 
-### **Inspect a volume**
+### **Inspect volume**
 
 ```bash
 docker volume inspect <volume_name>
 ```
 
-### **Remove a volume**
+### **Remove volume**
 
 ```bash
 docker volume rm <volume_name>
 ```
 
-Force removal:
+Force:
 
 ```bash
 docker volume rm -f <volume_name>
 ```
 
-### **Clean unused volumes**
+### **Cleanup unused volumes**
 
 ```bash
 docker volume prune
@@ -116,15 +126,15 @@ docker volume prune
 
 ---
 
-## 🏞️ Images
+# 🏞️ 3. Images — Essential Commands
 
-### **List local images**
+### **List images**
 
 ```bash
 docker images
 ```
 
-### **Download an image (pull)**
+### **Pull an image**
 
 ```bash
 docker pull <image>
@@ -136,32 +146,193 @@ docker pull <image>
 docker rmi <image>
 ```
 
-Force removal:
+Force:
 
 ```bash
 docker rmi -f <image>
 ```
 
-### **Build an image from a Dockerfile**
+### **Build image from Dockerfile**
 
 ```bash
 docker build -t <image_name> .
 ```
 
-### **Inspect an image**
+### **Inspect image**
 
 ```bash
 docker inspect <image>
 ```
 
-### **Clean unused images**
+### **Cleanup unused images**
 
 ```bash
 docker image prune
 ```
 
-Clean everything not being used:
+Full cleanup:
 
 ```bash
 docker system prune -a
+```
+
+---
+
+# 🏗️ 4. Example — Building & Running a Generic Web App Image
+
+### **Build image**
+
+```bash
+docker build -t app-webserver .
+```
+
+### **Run container (initial version)**
+
+```bash
+docker run -d \
+  --name app \
+  -p 8080:80 \
+  -v /data/app:/data/app \
+  app-webserver
+```
+
+---
+
+# 🔥 5. FULL DOCKER RESET — Stop, Remove, Clean EVERYTHING
+
+### ✅ 1 — List containers
+
+Running:
+
+```bash
+docker ps
+```
+
+All:
+
+```bash
+docker ps -a
+```
+
+### ✅ 2 — Stop ALL containers
+
+```bash
+docker stop $(docker ps -aq)
+```
+
+### ✅ 3 — Remove ALL containers
+
+```bash
+docker rm $(docker ps -aq)
+```
+
+### ✅ 4 — Remove ALL images
+
+```bash
+docker rmi $(docker images -q)
+```
+
+Force:
+
+```bash
+docker rmi -f $(docker images -q)
+```
+
+### ✅ 5 — Remove ALL volumes (optional)
+
+```bash
+docker volume rm $(docker volume ls -q)
+```
+
+### Result:
+
+Your Docker environment is **completely reset**.
+
+Full wipe:
+
+```bash
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker rmi -f $(docker images -q)
+docker volume rm $(docker volume ls -q)
+```
+
+---
+
+# 📁 6. Correct Way to Run the App Container with Absolute Paths
+
+Assume the app uses absolute paths like:
+
+```
+/data/app/files
+/data/app/runtime
+/data/app/logs
+```
+
+To mirror these paths inside the container, mount the parent directory:
+
+### ✔ Correct bind mount
+
+```bash
+-v /data:/data
+```
+
+This ensures:
+
+```
+/data/app (container) == /data/app (host)
+```
+
+---
+
+# 🧱 7. Final Recommended Run Command
+
+```bash
+docker run -d \
+  --name app \
+  -p 8080:80 \
+  -v /data:/data \
+  app-webserver
+```
+
+---
+
+# 📝 8. Example Dockerfile (Generic)
+
+```dockerfile
+FROM httpd:2.4
+RUN sed -i 's/#LoadModule rewrite_module/LoadModule rewrite_module/' /usr/local/apache2/conf/httpd.conf
+COPY vhosts.conf /usr/local/apache2/conf/extra/vhosts.conf
+RUN echo "Include conf/extra/vhosts.conf" >> /usr/local/apache2/conf/httpd.conf
+```
+
+### Generic `vhosts.conf`
+
+```apache
+DocumentRoot /data/app
+ScriptAlias /cgi-bin/ "/data/app/cgi-bin/"
+CustomLog /data/app/logs/access_log combined
+AuthUserFile /data/app/runtime/.authfile
+```
+
+---
+
+# 🧪 9. Testing & Debugging
+
+### Access the app
+
+```
+http://IP:8080
+```
+
+### View logs
+
+```bash
+docker logs app -f
+```
+
+### Enter container
+
+```bash
+docker exec -it app bash
 ```
