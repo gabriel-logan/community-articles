@@ -180,6 +180,52 @@ docker system prune -a
 
 ---
 
+# 🧹 3.1. Clean Only Docker Cache and Temporary Files
+
+These commands clean **only build cache and temporary Docker data**, without removing useful images, containers, or volumes.
+
+---
+
+## ✅ Clean only the build cache (BuildKit)
+
+Removes internal build cache:
+
+```bash
+docker builder prune
+```
+
+See what will be removed:
+
+```bash
+docker builder prune --verbose
+```
+
+Clean **all** build cache (more aggressive, but does NOT delete images):
+
+```bash
+docker builder prune --all
+```
+
+---
+
+## ✅ Remove only temporary/dangling images
+
+Dangling = intermediate or orphaned layers:
+
+```bash
+docker image prune
+```
+
+---
+
+## ✅ Optionally remove stopped containers (common leftover “tmp”)
+
+```bash
+docker container prune
+```
+
+---
+
 # 🏗️ 4. Example — Building & Running a Generic Web App Image
 
 ### **Build image**
