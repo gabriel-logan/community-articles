@@ -263,7 +263,7 @@ docker volume rm $(docker volume ls -q)
 
 # 📁 6. Correct Way to Run the App Container with Absolute Paths
 
-Assume the app uses absolute paths like:
+If the app uses absolute paths like:
 
 ```
 /data/app/files
@@ -271,18 +271,16 @@ Assume the app uses absolute paths like:
 /data/app/logs
 ```
 
-To mirror these paths inside the container, mount the parent directory:
-
-### ✔ Correct bind mount
+Mount the parent directory:
 
 ```bash
 -v /data:/data
 ```
 
-This ensures:
+Now inside the container:
 
 ```
-/data/app (container) == /data/app (host)
+/data/app == /data/app (host)
 ```
 
 ---
@@ -337,4 +335,64 @@ docker logs app -f
 
 ```bash
 docker exec -it app bash
+```
+
+---
+
+# 🔄 10. Important: Auto-Restart Containers After Reboot
+
+## Enable auto-restart for containers
+
+To ensure containers come back automatically when Docker or the server restarts, run them with:
+
+```bash
+--restart=always
+```
+
+Example:
+
+```bash
+docker run -d \
+  --name app \
+  --restart=always \
+  -p 8080:80 \
+  -v /data:/data \
+  app-webserver
+```
+
+## Apply restart policy to an existing container
+
+Docker does **not** allow modifying restart policy in-place. You must recreate the container:
+
+```bash
+docker stop app
+docker rm app
+```
+
+Then recreate:
+
+```bash
+docker run -d --name app --restart=always app-webserver
+```
+
+---
+
+# 🖥️ 11. Ensure Docker Starts Automatically on System Boot
+
+Check if Docker is enabled:
+
+```bash
+systemctl is-enabled docker
+```
+
+Enable Docker startup on boot:
+
+```bash
+systemctl enable docker
+```
+
+Start Docker service manually if necessary:
+
+```bash
+systemctl start docker
 ```
