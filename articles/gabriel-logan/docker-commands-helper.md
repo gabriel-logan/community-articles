@@ -172,6 +172,8 @@ docker image prune
 
 Full cleanup:
 
+It removes all unused images, containers, networks, and optionally, volumes.
+
 ```bash
 docker system prune -a
 ```
