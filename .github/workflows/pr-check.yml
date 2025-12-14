@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: 20
           cache: "pnpm"
+      - uses: pnpm/action-setup@v4
       - run: pnpm install
       - name: Format check
         run: pnpm format:check
