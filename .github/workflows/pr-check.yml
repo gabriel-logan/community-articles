@@ -21,13 +21,13 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: "yarn"
-      - run: yarn install
+          cache: "pnpm"
+      - run: pnpm install
       - name: Format check
-        run: yarn format:check
+        run: pnpm format:check
       - name: Lint check
-        run: yarn lint
-      - run: yarn build
+        run: pnpm lint
+      - run: pnpm build
       - name: Check if dist and types directories exist
         run: |
           if [ ! -d "dist" ]; then
