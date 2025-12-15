@@ -1,7 +1,9 @@
 name: Deploy React Vite App
 
 on:
-  push:
+  workflow_run:
+    workflows: ["PR Check"]
+    types: [completed]
     branches: ["main"]
 
   workflow_dispatch:
@@ -17,10 +19,18 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout code (workflow_run)
+        if: ${{ github.event_name == 'workflow_run' }}
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Checkout code (manual)
+        if: ${{ github.event_name != 'workflow_run' }}
         uses: actions/checkout@v5
 
       - uses: pnpm/action-setup@v4
@@ -68,6 +78,7 @@ jobs:
           path: ./dist
 
   deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
