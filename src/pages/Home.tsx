@@ -10,6 +10,10 @@ import { Link } from "react-router";
 import { articleFiles } from "../configs/articleFilesRaw";
 
 const articlesPerPage = 8;
+const specialArticlePaths = new Set([
+  "../../articles/gabriel-logan/example1.md",
+  "../../articles/gabriel-logan/example2.md",
+]);
 
 declare const __FEATURED_ARTICLE_SEED__: string;
 
@@ -61,23 +65,36 @@ export default function HomePage() {
     );
   }, []);
 
-  const authors = useMemo(
-    () => Array.from(new Set(articleList.map((article) => article.username))),
+  const specialArticles = useMemo(
+    () =>
+      articleList.filter((article) => specialArticlePaths.has(article.path)),
     [articleList],
+  );
+
+  const regularArticles = useMemo(
+    () =>
+      articleList.filter((article) => !specialArticlePaths.has(article.path)),
+    [articleList],
+  );
+
+  const authors = useMemo(
+    () =>
+      Array.from(new Set(regularArticles.map((article) => article.username))),
+    [regularArticles],
   );
 
   const filteredArticles = useMemo(() => {
     const lowerQuery = query.toLowerCase();
 
-    return articleList.filter(
+    return regularArticles.filter(
       (a) =>
         (selectedAuthor === "all" || a.username === selectedAuthor) &&
         (a.title.toLowerCase().includes(lowerQuery) ||
           a.username.toLowerCase().includes(lowerQuery)),
     );
-  }, [query, selectedAuthor, articleList]);
+  }, [query, selectedAuthor, regularArticles]);
 
-  const featuredArticle = filteredArticles[0] ?? articleList[0];
+  const featuredArticle = filteredArticles[0] ?? regularArticles[0];
   const pageCount = Math.max(
     1,
     Math.ceil(filteredArticles.length / articlesPerPage),
@@ -118,7 +135,7 @@ export default function HomePage() {
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
               <div className="rounded-md border border-gray-800 bg-[#0d1117] p-4">
                 <p className="text-2xl font-bold text-gray-100">
-                  {articleList.length}
+                  {regularArticles.length}
                 </p>
                 <p className="mt-1 text-xs text-gray-500 uppercase">articles</p>
               </div>
@@ -260,6 +277,46 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {specialArticles.length > 0 ? (
+        <section className="mt-8">
+          <div className="mb-4 flex items-end justify-between gap-4">
+            <div>
+              <p className="text-sm font-semibold text-blue-400">
+                Special cards
+              </p>
+              <h2 className="mt-1 text-2xl font-bold text-gray-100">
+                How to submit
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {specialArticles.map(({ path, username, fileName, title }) => (
+              <Link
+                key={path}
+                to={`/articles/${username}/${fileName}`}
+                className="group flex min-h-[180px] flex-col justify-between rounded-lg border border-blue-500/30 bg-blue-500/10 p-5 transition-all duration-200 hover:border-blue-400 hover:bg-blue-500/15 hover:shadow-lg hover:shadow-blue-500/10"
+              >
+                <div>
+                  <p className="text-sm font-medium text-blue-300">
+                    Featured guide
+                  </p>
+                  <h3 className="mt-3 text-xl font-bold text-gray-100 transition-colors group-hover:text-blue-200">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-400">by {username}</p>
+                </div>
+
+                <div className="mt-6 flex items-center justify-between border-t border-blue-400/20 pt-4 text-sm text-blue-200">
+                  <span>Read guide</span>
+                  <FaArrowRight className="transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </main>
   );
 }
