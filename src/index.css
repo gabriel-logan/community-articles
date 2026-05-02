@@ -19,6 +19,32 @@ body {
 }
 
 .markdown-body {
+  color-scheme: dark;
+  --bgColor-default: #111820;
+  --bgColor-muted: #0b1220;
+  --borderColor-default: #1f2937;
+  --borderColor-muted: #1f2937;
+  --fgColor-default: #c9d1d9;
+  --fgColor-muted: #94a3b8;
+  --color-prettylights-syntax-brackethighlighter-angle: #9198a1;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+  --color-prettylights-syntax-carriage-return-bg: #b62324;
+  --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+  --color-prettylights-syntax-comment: #9198a1;
+  --color-prettylights-syntax-constant: #79c0ff;
+  --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+  --color-prettylights-syntax-entity: #d2a8ff;
+  --color-prettylights-syntax-entity-tag: #7ee787;
+  --color-prettylights-syntax-keyword: #ff7b72;
+  --color-prettylights-syntax-markup-bold: #f0f6fc;
+  --color-prettylights-syntax-markup-heading: #1f6feb;
+  --color-prettylights-syntax-markup-italic: #f0f6fc;
+  --color-prettylights-syntax-markup-list: #f2cc60;
+  --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+  --color-prettylights-syntax-storage-modifier-import: #f0f6fc;
+  --color-prettylights-syntax-string: #a5d6ff;
+  --color-prettylights-syntax-string-regexp: #7ee787;
+  --color-prettylights-syntax-variable: #ffa657;
   max-width: 1192px;
   margin: 2rem auto;
   padding: 2rem;
@@ -31,14 +57,21 @@ body {
   transition: all 0.3s ease;
 }
 
-.markdown-body pre {
+.markdown-body pre,
+.markdown-body .highlight pre {
   font-size: 1rem;
   padding: 1rem;
   margin: 0.1rem 0;
   background: #0b1220;
   border: 1px solid #1f2937;
   border-radius: 10px;
+  color: #c9d1d9;
   overflow: auto;
+}
+
+.markdown-body pre code,
+.markdown-body pre tt {
+  color: inherit;
 }
 
 ol,
@@ -137,6 +170,14 @@ menu {
   width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
+  color: #c9d1d9;
+}
+.markdown-body table tr {
+  background-color: #111820;
+  border-top: 1px solid #1f2937;
+}
+.markdown-body table tr:nth-child(2n) {
+  background-color: #0f172a;
 }
 .markdown-body th,
 .markdown-body td {
