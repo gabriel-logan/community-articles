@@ -167,10 +167,13 @@ menu {
 }
 
 .markdown-body table {
+  display: table;
   width: 100%;
+  min-width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
   color: #c9d1d9;
+  table-layout: auto;
 }
 .markdown-body table tr {
   background-color: #111820;
