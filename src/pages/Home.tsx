@@ -107,7 +107,7 @@ export default function HomePage() {
                 Community Library
               </p>
               <h1 className="max-w-3xl text-4xl font-bold text-gray-100 sm:text-5xl">
-                Articles made to be found, not scrolled forever.
+                Latest community articles
               </h1>
               <h2 className="mt-4 max-w-2xl text-base leading-7 text-gray-400">
                 Explore Markdown articles from the community with search, author
