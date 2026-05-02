@@ -60,8 +60,8 @@ body {
 .markdown-body pre,
 .markdown-body .highlight pre {
   font-size: 1rem;
-  padding: 1rem;
-  margin: 0.1rem 0;
+  padding: 1.1rem;
+  margin: 1rem 0;
   background: #08111f;
   border: 1px solid #334155;
   border-radius: 10px;
@@ -173,28 +173,52 @@ menu {
   display: table;
   width: 100%;
   min-width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin: 1rem 0;
-  border: 1px solid #334155;
-  color: #c9d1d9;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+  border: 1px solid #475569;
+  border-radius: 8px;
+  background: #182231;
+  color: #e2e8f0;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(148, 163, 184, 0.08),
+    0 10px 24px rgba(0, 0, 0, 0.12);
   table-layout: auto;
 }
 .markdown-body table tr {
-  background-color: #111820;
-  border-top: 1px solid #334155;
+  background-color: #182231;
+  border-top: 0;
 }
 .markdown-body table tr:nth-child(2n) {
-  background-color: #0d1726;
+  background-color: #1f2a3a;
 }
 .markdown-body th,
 .markdown-body td {
-  border: 1px solid #334155;
+  border: 0;
+  border-right: 1px solid #506074;
+  border-bottom: 1px solid #3a4657;
   padding: 0.6rem 0.8rem;
 }
+.markdown-body tbody td {
+  border-right-color: #5b6b7f;
+}
 .markdown-body thead th {
-  background: #162235;
-  color: #e6edf3;
+  border-right-color: #64748b;
+}
+.markdown-body th:last-child,
+.markdown-body td:last-child {
+  border-right: 0;
+}
+.markdown-body tbody tr:last-child td {
+  border-bottom: 0;
+}
+.markdown-body thead th {
+  background: #263244;
+  border-bottom: 1px solid #5b687a;
+  color: #f8fafc;
+  font-weight: 700;
+  text-align: left;
 }
 
 .animate-spin-slow {

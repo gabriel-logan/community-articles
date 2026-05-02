@@ -83,6 +83,11 @@ export default function MarkdownBase({
         components={{
           h1: ({ children }) => <Heading level={1}>{children}</Heading>,
           h2: ({ children }) => <Heading level={2}>{children}</Heading>,
+          pre: ({ children, className, ...props }) => (
+            <pre className={`group relative ${className ?? ""}`} {...props}>
+              {children}
+            </pre>
+          ),
 
           code({ className, children, ...props }) {
             const code = String(children).replace(/\n$/, "");
@@ -96,13 +101,11 @@ export default function MarkdownBase({
                 const html = toHtml(tree);
 
                 return (
-                  <div className="group relative">
-                    <pre className={className}>
-                      <code
-                        className={className}
-                        dangerouslySetInnerHTML={{ __html: html }}
-                      />
-                    </pre>
+                  <>
+                    <code
+                      className={className}
+                      dangerouslySetInnerHTML={{ __html: html }}
+                    />
 
                     <button
                       onClick={async () => {
@@ -122,7 +125,7 @@ export default function MarkdownBase({
                         </>
                       )}
                     </button>
-                  </div>
+                  </>
                 );
               }
             }
