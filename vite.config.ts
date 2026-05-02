@@ -6,6 +6,9 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: "/community-articles/",
+  define: {
+    __FEATURED_ARTICLE_SEED__: JSON.stringify(`${Date.now()}-${Math.random()}`),
+  },
   build: {
     minify: "terser",
     rollupOptions: {

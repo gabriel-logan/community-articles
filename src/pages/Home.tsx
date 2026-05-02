@@ -11,12 +11,25 @@ import { articleFiles } from "../configs/articleFilesRaw";
 
 const articlesPerPage = 8;
 
+declare const __FEATURED_ARTICLE_SEED__: string;
+
 type ArticleCard = {
   path: string;
   username: string;
   fileName: string;
   title: string;
 };
+
+function getSeededRank(value: string) {
+  let hash = 0;
+  const input = `${__FEATURED_ARTICLE_SEED__}:${value}`;
+
+  for (let i = 0; i < input.length; i += 1) {
+    hash = Math.imul(31, hash) + input.charCodeAt(i);
+  }
+
+  return hash >>> 0;
+}
 
 export default function HomePage() {
   const [query, setQuery] = useState("");
@@ -43,7 +56,9 @@ export default function HomePage() {
       })
       .filter(Boolean);
 
-    return list as ArticleCard[];
+    return (list as ArticleCard[]).sort(
+      (a, b) => getSeededRank(a.path) - getSeededRank(b.path),
+    );
   }, []);
 
   const authors = useMemo(
